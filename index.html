@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+
+  <!-- STYLESHEET -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- FONT -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <section>
+    <form onsubmit="onFormSubmit(event)" name="form">
+      <h3 class="header">Add Employee</h3>
+      <div class="move-down"></div>
+
+      <div class="form-fields">
+        <label for="name" class="label">Name:</label>
+        <input type="text" name="name" id="name" placeholder="Enter name" /> <!-- INPUT -->
+      </div>
+
+      <div class="error-fields">
+        <div class="label"></div>
+        <div class="error error-name"></div>
+      </div>
+
+      <div class="form-fields">
+        <label for="gender" class="label">Gender: </label>
+        <div class="gender-option">
+          <input type="radio" name="gender" value="male" checked /> <!-- INPUT -->
+          <label for="html">Male</label>
+          <input type="radio" name="gender" value="female" /> <!-- INPUT -->
+          <label for="css">Female</label>
+        </div>
+      </div>
+
+      <div class="error-fields">
+        <div class="label"></div>
+        <div class="error error-gender"></div>
+      </div>
+
+      <div class="form-fields">
+        <label for="dob" class="label">Date of birth: </label>
+        <input type="text" name="dob" id="dob" placeholder="mm/dd/yyyy" /> <!-- INPUT -->
+      </div>
+
+      <div class="error-fields">
+        <div class="label"></div>
+        <div class="error error-dob"></div>
+      </div>
+
+      <div class="form-fields">
+        <label for="email" class="label">Email: </label>
+        <input type="text" name="email" id="email" placeholder="Email" /> <!-- INPUT -->
+      </div>
+
+      <div class="error-fields">
+        <div class="label"></div>
+        <div class="error error-email"></div>
+      </div>
+
+      <div class="form-fields">
+        <label for="phone" class="label">Phone: </label>
+        <input type="tel" name="phone" id="phone" placeholder="Phone" /> <!-- INPUT -->
+      </div>
+
+      <div class="error-fields">
+        <div class="label"></div>
+        <div class="error error-phone"></div>
+      </div>
+
+      <div class="form-fields">
+        <label for="hobbies" class="label hobbies-label">Hobbies: </label>
+        <div class="hobby-option">
+          <div class="option">
+            <input type="checkbox" name="hobbies" class="hobbies" value="cricket" /> <!-- INPUT -->
+            <label for="hobbies">Cricket</label>
+          </div>
+          <div class="option">
+            <input type="checkbox" name="hobbies" class="hobbies" value="chess" /> <!-- INPUT -->
+            <label for="hobbies">Chess</label>
+          </div>
+          <div class="option">
+            <input type="checkbox" name="hobbies" class="hobbies" value="music" /> <!-- INPUT -->
+            <label for="hobbies">Music</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-fields">
+        <label class="label"></label>
+        <button type="submit" id="submit-btn">Submit</button>
+      </div>
+    </form>
+  </section>
+
+  <section id="show-data"></section>
+  <script src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,214 @@
+:root {
+  --primary: #3f86e2;
+  --btnFocus: #3673c4;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+section {
+  width: 100%;
+}
+
+/* HELPER */
+.option {
+  display: flex;
+}
+
+.header {
+  color: white;
+  margin: 0;
+  background-color: var(--primary);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0.5em;
+}
+
+/* FORM */
+
+form {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid var(--primary);
+  margin: 5em auto;
+  padding: 4em 2em 2em 2em;
+  border-radius: 5px;
+  position: relative;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="tel"],
+form input[type="date"] {
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding: 0.3em;
+}
+form input[type="radio"],
+form input[type="checkbox"] {
+  cursor: pointer;
+}
+.form-fields input {
+  width: 80%;
+}
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="tel"]:focus,
+form input[type="date"]:focus{
+  outline: var(--primary);
+}
+
+.form-fields {
+  width: 100%;
+  padding: 0.5em 0.2em;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+}
+
+.label {
+  width: 20%;
+  text-align: right;
+  margin-right: 1em;
+  font-weight: bold;
+}
+
+.gender-option {
+  display: flex;
+}
+.gender-option label,
+.gender-option label {
+  margin-right: 1em;
+}
+.gender-option input,
+.hobby-option input {
+  width: 1em;
+}
+
+.hobbies-label {
+  vertical-align: top;
+}
+.hobby-option {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  border: none;
+  border-radius: 5px;
+  color: white;
+  background-color: var(--primary);
+  padding: 0.6em 1em;
+  width: 5em;
+  margin: .2em;
+  box-shadow: 0 2px 3px rgba(138, 138, 138, 0.2);
+}
+button:hover {
+  background-color: var(--btnFocus);
+  cursor: pointer;
+}
+button[type="submit"]:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+button:active {
+  box-shadow: 0 0px 3px rgba(138, 138, 138, 0.2);
+  transform: translateY(4px);
+}
+
+/* VALIDATION */
+.error-fields {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.error-fields .label {
+  display: block;
+}
+.error {
+  width: 80%;
+  font-size: 0.7em;
+  color: red;
+  height: 0.7em;
+  margin-bottom: 0.5em;
+}
+
+/* TABLE */
+table {
+  width: 80%;
+  border: 1px solid var(--primary);
+  margin: 0 auto;
+  padding: 4em 2em 2em 2em;
+  border-radius: 5px;
+  position: relative;
+}
+
+th,
+td {
+  border: 1px solid lightgray;
+  padding: .7em;
+  text-align: left;
+}
+
+.deleteBtn{
+  background-color: rgb(250, 112, 112);
+}
+.deleteBtn:hover{
+  background-color: rgb(182, 81, 81);
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 768px) {
+  .form-fields {
+    flex-direction: column;
+  }
+  .label,
+  .form-fields input {
+    width: 100%;
+    text-align: left;
+    margin-right: 0;
+  }
+
+  .label {
+    margin-bottom: 0.5em;
+  }
+
+  .hobby-option,
+  .gender-option {
+    width: 100%;
+    flex-direction: row;
+    justify-content: left;
+  }
+
+  .gender-option input,
+  .hobby-option input {
+    width: auto;
+    margin-right: 0.5em;
+  }
+
+  .error-fields {
+    flex-direction: column;
+  }
+  .error-fields .label {
+    display: none;
+  }
+  .error {
+    width: 100%;
+  }
+
+  table{
+    padding: 4em 1em 1em 1em;
+  }
+  th, td{
+    padding: 0em;
+  }
+}
