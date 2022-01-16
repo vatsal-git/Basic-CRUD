@@ -18,23 +18,21 @@
 
 <body>
   <section>
-    <form onsubmit="onFormSubmit(event)" name="form">
+    <form onsubmit="onFormSubmit(event)" name="empForm">
       <h3 class="header">Add Employee</h3>
-      <div class="move-down"></div>
 
-      <div class="form-fields">
+      <div class="input-field">
         <label for="name" class="label">Name:</label>
-        <input type="text" name="name" id="name" placeholder="Enter name" /> <!-- INPUT -->
+        <input type="text" name="fname" id="name" placeholder="Enter name" /> <!-- INPUT -->
       </div>
 
-      <div class="error-fields">
-        <div class="label"></div>
+      <div class="error-field">
         <div class="error error-name"></div>
       </div>
 
-      <div class="form-fields">
+      <div class="input-field">
         <label for="gender" class="label">Gender: </label>
-        <div class="gender-option">
+        <div class="option">
           <input type="radio" name="gender" value="male" checked /> <!-- INPUT -->
           <label for="html">Male</label>
           <input type="radio" name="gender" value="female" /> <!-- INPUT -->
@@ -42,44 +40,36 @@
         </div>
       </div>
 
-      <div class="error-fields">
-        <div class="label"></div>
-        <div class="error error-gender"></div>
-      </div>
-
-      <div class="form-fields">
+      <div class="input-field">
         <label for="dob" class="label">Date of birth: </label>
         <input type="text" name="dob" id="dob" placeholder="mm/dd/yyyy" /> <!-- INPUT -->
       </div>
 
-      <div class="error-fields">
-        <div class="label"></div>
+      <div class="error-field">
         <div class="error error-dob"></div>
       </div>
 
-      <div class="form-fields">
+      <div class="input-field">
         <label for="email" class="label">Email: </label>
         <input type="text" name="email" id="email" placeholder="Email" /> <!-- INPUT -->
       </div>
 
-      <div class="error-fields">
-        <div class="label"></div>
+      <div class="error-field">
         <div class="error error-email"></div>
       </div>
 
-      <div class="form-fields">
+      <div class="input-field">
         <label for="phone" class="label">Phone: </label>
-        <input type="tel" name="phone" id="phone" placeholder="Phone" /> <!-- INPUT -->
+        <input type="text" name="phone" id="phone" placeholder="Phone" /> <!-- INPUT -->
       </div>
 
-      <div class="error-fields">
-        <div class="label"></div>
+      <div class="error-field">
         <div class="error error-phone"></div>
       </div>
 
-      <div class="form-fields">
-        <label for="hobbies" class="label hobbies-label">Hobbies: </label>
-        <div class="hobby-option">
+      <div class="input-field">
+        <label for="hobbies" class="label">Hobbies: </label>
+        <div class="hobby-option-wrapper">
           <div class="option">
             <input type="checkbox" name="hobbies" class="hobbies" value="cricket" /> <!-- INPUT -->
             <label for="hobbies">Cricket</label>
@@ -95,8 +85,8 @@
         </div>
       </div>
 
-      <div class="form-fields">
-        <label class="label"></label>
+      <div class="input-field">
+        <div class="label"></div>
         <button type="submit" id="submit-btn">Submit</button>
       </div>
     </form>

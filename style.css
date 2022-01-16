@@ -1,6 +1,7 @@
 :root {
   --primary: #3f86e2;
-  --btnFocus: #3673c4;
+  --primary-dark: #2a5894;
+  --primary-light: #89bcff;
 }
 
 * {
@@ -8,7 +9,7 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 section {
@@ -16,90 +17,16 @@ section {
 }
 
 /* HELPER */
-.option {
-  display: flex;
-}
-
 .header {
   color: white;
-  margin: 0;
+  margin-top: 0;
   background-color: var(--primary);
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
+  height: 2.5em;
   padding: 0.5em;
-}
-
-/* FORM */
-
-form {
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid var(--primary);
-  margin: 5em auto;
-  padding: 4em 2em 2em 2em;
-  border-radius: 5px;
-  position: relative;
-}
-
-form input[type="text"],
-form input[type="email"],
-form input[type="tel"],
-form input[type="date"] {
-  border: 1px solid lightgray;
-  border-radius: 5px;
-  padding: 0.3em;
-}
-form input[type="radio"],
-form input[type="checkbox"] {
-  cursor: pointer;
-}
-.form-fields input {
-  width: 80%;
-}
-form input[type="text"]:focus,
-form input[type="email"]:focus,
-form input[type="tel"]:focus,
-form input[type="date"]:focus{
-  outline: var(--primary);
-}
-
-.form-fields {
-  width: 100%;
-  padding: 0.5em 0.2em;
-  display: flex;
-  align-items: center;
-  justify-items: center;
-}
-
-.label {
-  width: 20%;
-  text-align: right;
-  margin-right: 1em;
-  font-weight: bold;
-}
-
-.gender-option {
-  display: flex;
-}
-.gender-option label,
-.gender-option label {
-  margin-right: 1em;
-}
-.gender-option input,
-.hobby-option input {
-  width: 1em;
-}
-
-.hobbies-label {
-  vertical-align: top;
-}
-.hobby-option {
-  display: flex;
-  flex-direction: column;
 }
 
 button {
@@ -109,30 +36,78 @@ button {
   background-color: var(--primary);
   padding: 0.6em 1em;
   width: 5em;
-  margin: .2em;
-  box-shadow: 0 2px 3px rgba(138, 138, 138, 0.2);
+  margin: 0.2em;
+  box-shadow: 100px 100px 80px rgba(0, 0, 0, 0.07);
 }
 button:hover {
-  background-color: var(--btnFocus);
+  background-color: var(--primary-dark);
   cursor: pointer;
 }
 button[type="submit"]:disabled {
-  opacity: 0.5;
+  background-color: var(--primary-light);
   pointer-events: none;
 }
 button:active {
-  box-shadow: 0 0px 3px rgba(138, 138, 138, 0.2);
+  box-shadow: 100px 100px 80px rgba(0, 0, 0, 0.07);
   transform: translateY(4px);
 }
 
+/* FORM */
+form {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid var(--primary);
+  margin: 2em auto;
+  padding: 4.5em 2em 2em 2em;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+}
+.input-field {
+  width: 100%;
+  padding: 0.5em 0.2em;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+}
+
+form input[type="text"] {
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding: 0.3em;
+  cursor: pointer;
+  outline: none;
+  width: 80%;
+}
+form input[type="text"]:focus {
+  border: 1px solid var(--primary);
+  box-shadow: 0 2px 3px rgba(138, 138, 138, 0.2);
+}
+
+.label {
+  width: 20%;
+  text-align: right;
+  padding-right: 1em;
+  font-weight: bold;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+}
+
+.hobby-option-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
 /* VALIDATION */
-.error-fields {
+.error-field {
   width: 100%;
   display: flex;
-  flex-direction: row;
-}
-.error-fields .label {
-  display: block;
+  justify-content: right;
 }
 .error {
   width: 80%;
@@ -146,69 +121,75 @@ button:active {
 table {
   width: 80%;
   border: 1px solid var(--primary);
-  margin: 0 auto;
-  padding: 4em 2em 2em 2em;
+  margin: 2em auto;
+  padding: 4.4em 2em 2em 2em;
   border-radius: 5px;
   position: relative;
+  overflow: hidden;
 }
-
 th,
 td {
   border: 1px solid lightgray;
-  padding: .7em;
+  padding: 0.7em;
   text-align: left;
-}
-
-.deleteBtn{
-  background-color: rgb(250, 112, 112);
-}
-.deleteBtn:hover{
-  background-color: rgb(182, 81, 81);
 }
 
 /* RESPONSIVE */
 @media screen and (max-width: 768px) {
-  .form-fields {
+  body {
+    font-size: smaller;
+  }
+  form,
+  table {
+    margin: 0 auto;
+    margin-top: 2em;
+    padding: 3.5em 1em 1em 1em;
+  }
+  .input-field {
     flex-direction: column;
+    padding: 0;
   }
   .label,
-  .form-fields input {
+  form input[type="text"] {
     width: 100%;
     text-align: left;
-    margin-right: 0;
   }
 
   .label {
-    margin-bottom: 0.5em;
+    margin-bottom: 0em;
   }
 
-  .hobby-option,
-  .gender-option {
+  .option {
     width: 100%;
+    flex-direction: row;
+    justify-content: left;
+    margin-bottom: 0.7em;
+  }
+  .option input {
+    margin-right: 0.5em;
+  }
+  .hobby-option-wrapper {
+    width: 100%;
+    display: flex;
     flex-direction: row;
     justify-content: left;
   }
 
-  .gender-option input,
-  .hobby-option input {
-    width: auto;
-    margin-right: 0.5em;
-  }
-
-  .error-fields {
+  .error-field {
     flex-direction: column;
   }
-  .error-fields .label {
+  .error-field .label {
     display: none;
   }
   .error {
     width: 100%;
   }
 
-  table{
+  table {
     padding: 4em 1em 1em 1em;
   }
-  th, td{
+  th,
+  td {
     padding: 0em;
   }
 }
