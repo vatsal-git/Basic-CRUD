@@ -32,31 +32,47 @@ function updateTable() {
     const arrOfData = getLocalStorage();
     createEle("h3", ".table", "header", "Display")
 
-    //TH
-    createEle("tr", "table", "tr" + -1);
     const dataKeys = Object.keys(arrOfData[0]);
     dataKeys.push("ACTION");
-    dataKeys.forEach((dataKey) => {
-        createEle("th", ".tr" + -1, "th", dataKey.toUpperCase());
-    });
 
-    arrOfData.forEach((data, index) => {
-        //TD
-        createEle("tr", "table", "tr" + index);
-        const dataValues = Object.values(data);
-        dataValues.forEach((dataValue) => {
-            createEle("td", ".tr" + index, "td", dataValue);
+    // //BASIC FORM
+    // //TH
+    // createEle("tr", "table", "tr" + -1);
+    // dataKeys.forEach((dataKey) => {
+    //     createEle("th", ".tr" + -1, "th", dataKey.toUpperCase());
+    // });
+
+    // arrOfData.forEach((data, index) => {
+    //     //TD
+    //     createEle("tr", "table", "tr" + index);
+    //     const dataValues = Object.values(data);
+    //     dataValues.forEach((dataValue) => {
+    //         createEle("td", ".tr" + index, "td", dataValue);
+    //     });
+    //     //BTN
+    //     createEle("td", ".tr" + index, "td" + index);
+    //     setEditBtn(index, dataValues);
+    //     setDeleteBtn(index);
+    // });
+
+    //ADVANCE FORM
+    dataKeys.forEach((dataKey, i) => {
+        createEle("tr", "table", "tr" + i);
+        arrOfData.forEach((data, j) => {
+            //TH
+            if (j == 0) {
+                createEle("th", ".tr" + i, "th", dataKeys[i].toUpperCase());
+            }
+            //TD
+            if (i != dataKeys.length - 1) {
+                createEle("td", ".tr" + i, "td", Object.values(arrOfData[j])[i]);
+            } else {
+                createEle("td", ".tr" + i, "td" + j);
+                setEditBtn(j, Object.values(arrOfData[j]));
+                setDeleteBtn(j);
+            }
         });
-        //BTN
-        createEle("td", ".tr" + index, "td" + index);
-        setEditBtn(index, dataValues);
-        setDeleteBtn(index);
     });
-    // for (let i = 0; i < Object.keys(arrOfData[0]).length; i++) {
-    //     for (let j = 0; j < arrOfData.length; j++) {
-    //         console.log(Object.keys(arrOfData[0]));
-    //     }
-    // }
 
     empForm.reset();
 }
@@ -172,7 +188,7 @@ function validate() {
                     break;
                 case "email": validateRes[2] = validateEmail(ele.target.value);
                     break;
-                case "phone":  validateRes[3] = validatePhone(ele.target.value);
+                case "phone": validateRes[3] = validatePhone(ele.target.value);
                     break;
             }
         });
