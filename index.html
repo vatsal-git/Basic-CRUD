@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
+  <title>CRUD Task</title>
 
   <!-- STYLESHEET -->
   <link rel="stylesheet" href="style.css">
@@ -13,87 +13,72 @@
   <!-- FONT -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
   <section>
-    <form onsubmit="onFormSubmit(event)" name="empForm">
+    <form onsubmit="onFormSubmit(event)" name="empForm" id="empForm">
       <h3 class="header">Add Employee</h3>
 
       <div class="input-field">
-        <label for="name" class="label">Name:</label>
-        <input type="text" name="fname" id="name" placeholder="Enter name" /> <!-- INPUT -->
-      </div>
-
-      <div class="error-field">
-        <div class="error error-name"></div>
+        <label for="name" class="label">Name:</label> <!-- LABEL -->
+        <input type="text" name="name" id="name" placeholder="Enter name" /> <!-- INPUT -->
       </div>
 
       <div class="input-field">
-        <label for="gender" class="label">Gender: </label>
-        <div class="option">
-          <input type="radio" name="gender" value="male" checked /> <!-- INPUT -->
-          <label for="html">Male</label>
-          <input type="radio" name="gender" value="female" /> <!-- INPUT -->
-          <label for="css">Female</label>
+        <label for="gender" class="label">Gender: </label> <!-- LABEL -->
+        <div id="gender-option-wrapper">
+          <div class="option">
+            <input type="radio" name="gender" value="male" checked /> <!-- INPUT -->
+            <label for="html">Male</label> <!-- LABEL -->
+          </div>
+          <div class="option">
+            <input type="radio" name="gender" value="female" /> <!-- INPUT -->
+            <label for="css">Female</label> <!-- LABEL -->
+          </div>
         </div>
       </div>
 
       <div class="input-field">
-        <label for="dob" class="label">Date of birth: </label>
+        <label for="dob" class="label">Date of birth: </label> <!-- LABEL -->
         <input type="text" name="dob" id="dob" placeholder="mm/dd/yyyy" /> <!-- INPUT -->
       </div>
 
-      <div class="error-field">
-        <div class="error error-dob"></div>
-      </div>
-
       <div class="input-field">
-        <label for="email" class="label">Email: </label>
+        <label for="email" class="label">Email: </label> <!-- LABEL -->
         <input type="text" name="email" id="email" placeholder="Email" /> <!-- INPUT -->
       </div>
 
-      <div class="error-field">
-        <div class="error error-email"></div>
-      </div>
-
       <div class="input-field">
-        <label for="phone" class="label">Phone: </label>
+        <label for="phone" class="label">Phone: </label> <!-- LABEL -->
         <input type="text" name="phone" id="phone" placeholder="Phone" /> <!-- INPUT -->
       </div>
 
-      <div class="error-field">
-        <div class="error error-phone"></div>
-      </div>
-
       <div class="input-field">
-        <label for="hobbies" class="label">Hobbies: </label>
-        <div class="hobby-option-wrapper">
+        <label for="hobby" class="label">Hobbies: </label> <!-- LABEL -->
+        <div id="hobby-option-wrapper">
           <div class="option">
-            <input type="checkbox" name="hobbies" class="hobbies" value="cricket" /> <!-- INPUT -->
-            <label for="hobbies">Cricket</label>
+            <input type="checkbox" name="hobby" class="hobby" value="cricket" /> <!-- INPUT -->
+            <label for="hobby">Cricket</label>
           </div>
           <div class="option">
-            <input type="checkbox" name="hobbies" class="hobbies" value="chess" /> <!-- INPUT -->
-            <label for="hobbies">Chess</label>
+            <input type="checkbox" name="hobby" class="hobby" value="chess" /> <!-- INPUT -->
+            <label for="hobby">Chess</label>
           </div>
           <div class="option">
-            <input type="checkbox" name="hobbies" class="hobbies" value="music" /> <!-- INPUT -->
-            <label for="hobbies">Music</label>
+            <input type="checkbox" name="hobby" class="hobby" value="music" /> <!-- INPUT -->
+            <label for="hobby">Music</label>
           </div>
         </div>
       </div>
 
-      <div class="input-field">
-        <div class="label"></div>
-        <button type="submit" id="submit-btn">Submit</button>
+      <div id="submitBtn-wrapper">
+        <button type="submit" id="submitBtn" class="btn">Submit</button>
       </div>
     </form>
   </section>
-
-  <section id="show-data"></section>
-  <script src="app.js"></script>
 </body>
-
+  <!-- SCRIPT -->
+  <script src="app.js"></script>
 </html>

@@ -9,106 +9,102 @@
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 section {
   width: 100%;
 }
 
-/* HELPER */
+#empForm,
+.dispTable {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2em auto;
+  padding: 4.5em 2em 2em 2em;
+  border: 1px solid var(--primary);
+  width: 80%;
+  border-radius: 5px;
+}
+
 .header {
-  color: white;
-  margin-top: 0;
-  background-color: var(--primary);
   position: absolute;
   top: 0;
   left: 0;
+  margin-top: 0;
+  padding: 0.5em;
+  background-color: var(--primary);
   width: 100%;
   height: 2.5em;
-  padding: 0.5em;
+  color: white;
 }
 
-button {
+.btn {
   border: none;
   border-radius: 5px;
-  color: white;
   background-color: var(--primary);
   padding: 0.6em 1em;
   width: 5em;
   margin: 0.2em;
   box-shadow: 100px 100px 80px rgba(0, 0, 0, 0.07);
+  color: white;
 }
-button:hover {
+.btn:hover {
   background-color: var(--primary-dark);
   cursor: pointer;
 }
-button[type="submit"]:disabled {
-  background-color: var(--primary-light);
-  pointer-events: none;
-}
-button:active {
+.btn:active {
   box-shadow: 100px 100px 80px rgba(0, 0, 0, 0.07);
   transform: translateY(4px);
 }
-
-/* FORM */
-form {
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid var(--primary);
-  margin: 2em auto;
-  padding: 4.5em 2em 2em 2em;
-  border-radius: 5px;
-  position: relative;
-  overflow: hidden;
+.btn:disabled {
+  background-color: var(--primary-light);
+  pointer-events: none;
 }
+
 .input-field {
   width: 100%;
   padding: 0.5em 0.2em;
   display: flex;
-  align-items: center;
-  justify-items: center;
 }
 
-form input[type="text"] {
+#empForm input[type="text"] {
+  padding: 0.3em;
+  width: 80%;
   border: 1px solid lightgray;
   border-radius: 5px;
-  padding: 0.3em;
-  cursor: pointer;
   outline: none;
-  width: 80%;
+  cursor: pointer;
 }
-form input[type="text"]:focus {
+#empForm input[type="text"]:focus {
   border: 1px solid var(--primary);
-  box-shadow: 0 2px 3px rgba(138, 138, 138, 0.2);
 }
 
 .label {
+  padding-right: 1em;
   width: 20%;
   text-align: right;
-  padding-right: 1em;
   font-weight: bold;
 }
 
-.option {
+#gender-option-wrapper {
   display: flex;
   align-items: center;
 }
 
-.hobby-option-wrapper {
+#hobby-option-wrapper {
   display: flex;
   flex-direction: column;
 }
 
-/* VALIDATION */
 .error-field {
   width: 100%;
   display: flex;
   justify-content: right;
 }
+
 .error {
   width: 80%;
   font-size: 0.7em;
@@ -117,18 +113,13 @@ form input[type="text"]:focus {
   margin-bottom: 0.5em;
 }
 
-/* TABLE */
-table {
-  width: 80%;
-  border: 1px solid var(--primary);
-  margin: 2em auto;
-  padding: 4.4em 2em 2em 2em;
-  border-radius: 5px;
-  position: relative;
-  overflow: hidden;
+.dispTable {
+  display: block;
+  overflow-x: scroll;
 }
-th,
-td {
+
+.dispTableHead,
+.dispTableData {
   border: 1px solid lightgray;
   padding: 0.7em;
   text-align: left;
@@ -139,61 +130,62 @@ td {
   body {
     font-size: smaller;
   }
-  form,
-  table {
+
+  #empForm,
+  .dispTable {
     margin: 0 auto;
     margin-top: 2em;
     padding: 3.5em 1em 1em 1em;
   }
+
   .input-field {
     flex-direction: column;
     padding: 0;
+    margin-top: 1em;
   }
+
+  .label {
+    margin-bottom: .5em;
+  }
+
   .label,
-  form input[type="text"] {
+  #empForm input[type="text"] {
     width: 100%;
     text-align: left;
   }
 
-  .label {
-    margin-bottom: 0em;
-  }
-
   .option {
     width: 100%;
-    flex-direction: row;
-    justify-content: left;
+    display: flex;
+    align-items: center;
     margin-bottom: 0.7em;
   }
   .option input {
     margin-right: 0.5em;
   }
-  .hobby-option-wrapper {
+
+  #hobby-option-wrapper,
+  #gender-option-wrapper {
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: left;
+    justify-content: center;
+    align-items: center;
   }
 
-  button{
+  .btn {
     padding: 0.5em 0.3em;
+  }
+  
+  .dispTableHead,
+  .dispTableData {
+    padding: 0em;
   }
 
   .error-field {
     flex-direction: column;
   }
-  .error-field .label {
-    display: none;
-  }
   .error {
     width: 100%;
-  }
-
-  table {
-    padding: 4em 1em 1em 1em;
-  }
-  th,
-  td {
-    padding: 0em;
   }
 }

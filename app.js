@@ -3,113 +3,133 @@ let editAt = -1;
 const dispErrors = document.querySelectorAll(".error");
 //ON RELOAD
 window.onload = (event) => {
-    isStorageEmpty() ? "" : updateTable();
+    if (!isStorageEmpty()) { updateTable() }
     event.preventDefault();
 };
 //ON SUBMIT
 function onFormSubmit(event) {
     event.preventDefault();
-    if (validate()) {
-        if (isStorageEmpty()) {
-            setLocalStorage([getEmployee()]);
-        } else if (editAt != -1) {
-            let tmp = getLocalStorage();
-            tmp[editAt] = getEmployee();
-            setLocalStorage(tmp);
-            editAt = -1;
-        } else {
-            setLocalStorage([...getLocalStorage(), getEmployee()]);
-        }
-        updateTable();
+    // if (validate()) {
+    if (isStorageEmpty()) {
+        setLocalStorage([getEmpForm()]);
+    } else if (editAt != -1) {
+        let tmp = getLocalStorage();
+        tmp[editAt] = getEmpForm();
+        setLocalStorage(tmp);
+        editAt = -1;
+    } else {
+        setLocalStorage([...getLocalStorage(), getEmpForm()]);
     }
-
+    updateTable();
+    // }
 }
 //UPDATE TABLE
 function updateTable() {
-    !document.querySelector("table") ? "" : removeEle("table");
-
-    createEle("table", "#show-data", "table");
     const arrOfData = getLocalStorage();
-    createEle("h3", ".table", "header", "Display")
-
     const dataKeys = Object.keys(arrOfData[0]);
     dataKeys.push("ACTION");
+    dataKeys.splice(dataKeys.indexOf("id"), 1);
 
-    // //BASIC FORM
-    // //TH
-    // createEle("tr", "table", "tr" + -1);
-    // dataKeys.forEach((dataKey) => {
-    //     createEle("th", ".tr" + -1, "th", dataKey.toUpperCase());
-    // });
+    //BASIC TABLE
+    if (!document.getElementById('basicTable')) {
+        const basicTable = createEle("table", document.body, { className: "dispTable", id: "basicTable" });
+        createEle("h3", basicTable, { className: "header", textContent: "Basic table" });
 
-    // arrOfData.forEach((data, index) => {
-    //     //TD
-    //     createEle("tr", "table", "tr" + index);
-    //     const dataValues = Object.values(data);
-    //     dataValues.forEach((dataValue) => {
-    //         createEle("td", ".tr" + index, "td", dataValue);
-    //     });
-    //     //BTN
-    //     createEle("td", ".tr" + index, "td" + index);
-    //     setEditBtn(index, dataValues);
-    //     setDeleteBtn(index);
-    // });
-
-    //ADVANCE FORM
-    dataKeys.forEach((dataKey, i) => {
-        createEle("tr", "table", "tr" + i);
-        arrOfData.forEach((data, j) => {
-            //TH
-            if (j == 0) {
-                createEle("th", ".tr" + i, "th", dataKeys[i].toUpperCase());
-            }
-            //TD
-            if (i != dataKeys.length - 1) {
-                createEle("td", ".tr" + i, "td", Object.values(arrOfData[j])[i]);
-            } else {
-                createEle("td", ".tr" + i, "td" + j);
-                setEditBtn(j, Object.values(arrOfData[j]));
-                setDeleteBtn(j);
-            }
+        //TH
+        const headRow = createEle("tr", basicTable, {});
+        dataKeys.forEach((dataKey) => {
+            createEle("th", headRow, { className: 'dispTableHead', textContent: dataKey.toUpperCase() });
         });
-    });
+
+        arrOfData.forEach((data) => {
+            const dataValues = Object.values(data);
+            let id = dataValues.splice(0, 1);
+            //TD
+            const dataRow = createEle("tr", basicTable, { className: 'tableRow' });
+            dataValues.forEach((dataValue) => {
+                createEle("td", dataRow, { className: "dispTableData", textContent: dataValue });
+            });
+
+            //BTN
+            const btnCell = createEle("td", dataRow, { className: "dispTableData" });
+            createEle("button", btnCell, { className: "editBtn btn", textContent: "Edit", onclick: () => { onEditLogic(data); } });
+            createEle("button", btnCell, { className: "deleteBtn btn", textContent: "Delete", onclick: () => { onDeleteLogic(data); } });
+        });
+    } else {
+        const index = arrOfData.length - 1;
+        const dataValues = Object.values(arrOfData[index]);
+        let id = dataValues.splice(0, 1);
+        //TD
+        const dataRow = createEle("tr", basicTable, { className: 'tableRow' });
+        dataValues.forEach((dataValue) => {
+            createEle("td", dataRow, { className: "dispTableData", textContent: dataValue });
+        });
+        //BTN
+        const btnCell = createEle("td", dataRow, { className: "dispTableData" });
+        createEle("button", btnCell, { className: "editBtn btn", textContent: "Edit", onclick: () => { onEditLogic(data); } });
+        createEle("button", btnCell, { className: "deleteBtn btn", textContent: "Delete", onclick: () => { onDeleteLogic(data); } });
+    }
+
+    //ADVANCE TABLE
+    if (!document.getElementById('advanceTable')) {
+        const advanceTable = createEle("table", document.body, { className: "dispTable", id: "advanceTable" });
+        createEle("h3", advanceTable, { className: "header", textContent: "Advance table" });
+
+        dataKeys.forEach((dataKey, rowNum) => {
+            const tableRow = createEle("tr", advanceTable, { className: "tableRow" });
+            arrOfData.forEach((data, columNum) => {
+                //TH
+                if (columNum == 0) {
+                    createEle("th", tableRow, { className: 'dispTableHead', textContent: dataKey.toUpperCase() });
+                }
+                //TD
+                if (rowNum != dataKeys.length - 1) {
+                    createEle("td", tableRow, { className: "dispTableData", textContent: Object.values(arrOfData[columNum])[rowNum] });
+                } else {
+                    //BTN
+                    const btnCell = createEle("td", tableRow, { className: "dispTableData" });
+                    createEle("button", btnCell, { className: "editBtn btn", textContent: "Edit", onclick: () => { onEditLogic(data); } });
+                    createEle("button", btnCell, { className: "deleteBtn btn", textContent: "Delete", onclick: () => { onDeleteLogic(data); } });
+                }
+            });
+        });
+    } else {
+        dataKeys.forEach((dataKey, rowNum) => {
+            const tableRow = createEle("tr", advanceTable, { className: "tableRow" });
+            arrOfData.forEach((data, columNum) => {
+                //TD
+                if (rowNum != dataKeys.length - 1) {
+                    createEle("td", tableRow, { className: "dispTableData", textContent: Object.values(arrOfData[columNum])[rowNum] });
+                } else {
+                    //BTN
+                    const btnCell = createEle("td", tableRow, { className: "dispTableData" });
+                    createEle("button", btnCell, { className: "editBtn btn", textContent: "Edit", onclick: () => { onEditLogic(data); } });
+                    createEle("button", btnCell, { className: "deleteBtn btn", textContent: "Delete", onclick: () => { onDeleteLogic(data); } });
+                }
+            });
+        });
+    }
 
     empForm.reset();
 }
-//MAKE EDIT BTN
-function setEditBtn(editIndex, dataValues) {
-    createEle("button", ".td" + editIndex, "editBtn" + editIndex, "Edit");
-    document.querySelector(".editBtn" + editIndex).addEventListener("click", () => {
-        editAt = editIndex;
-        setForm(dataValues);
-    });
-}
-//MAKE DELETE BTN
-function setDeleteBtn(deleteIndex) {
-    createEle("button", ".td" + deleteIndex, "deleteBtn" + deleteIndex, "Delete");
-    document.querySelector(".deleteBtn" + deleteIndex).addEventListener("click", () => {
-        let tmp = getLocalStorage();
-        tmp.splice(deleteIndex, 1);
-        setLocalStorage(tmp);
-        isStorageEmpty() ? removeEle('table') : updateTable();
-    });
-}
 //CREATE ELEMENT (HELPER)
-function createEle(element, parent, eleClass, innerHTML = "") {
-    element = document.createElement(element);
-    document.querySelector(parent).appendChild(element);
-    element.classList.add(eleClass);
-    element.id = getUUID();
-    element.innerHTML = innerHTML;
+function createEle(eleType, parent, properties) {
+    const ele = document.createElement(eleType);
+    parent.appendChild(ele);
+    Object.keys(properties).forEach((key) => {
+        ele[key] = properties[key]
+    })
+    return ele;
 }
 //REMOVE ELEMENT (HELPER)
-function removeEle(element) {
-    document.querySelector(element).remove();
+function removeEle(ele) {
+    ele.remove();
 }
-//GET EMPLOYEE OBJECT 
-function getEmployee() {
+//GET EMPLOYEE OBJECT
+function getEmpForm() {
     const Employee = {
-        fname: empForm.fname.value,
+        id: getUUID(),
+        fname: empForm.name.value,
         gender: empForm.gender.value,
         dob: empForm.dob.value,
         email: empForm.email.value,
@@ -126,7 +146,7 @@ function setForm(dataValues) {
     empForm.dob.value = dataValues[2];
     empForm.email.value = dataValues[3];
     empForm.phone.value = dataValues[4];
-    document.querySelectorAll('.hobbies').forEach((hobby) => {
+    document.getElementsByClassName(".hobbies").forEach((hobby) => {
         if (dataValues[5].includes(hobby.value)) {
             hobby.checked = true;
         } else {
@@ -177,18 +197,27 @@ function getUUID() {
 }
 //VALIDATE
 function validate() {
-    let validateRes = [validateName(empForm.fname.value), validateDOB(empForm.dob.value), validateEmail(empForm.email.value), validatePhone(empForm.phone.value)];
+    let validateRes = [
+        validateName(empForm.name.value),
+        validateDOB(empForm.dob.value),
+        validateEmail(empForm.email.value),
+        validatePhone(empForm.phone.value),
+    ];
     const inputs = document.querySelectorAll("input");
     inputs.forEach((input) => {
-        input.addEventListener("blur", (ele) => {
+        input.addEventListener("input", (ele) => {
             switch (ele.target.name) {
-                case "fname": validateRes[0] = validateName(ele.target.value);
+                case "fname":
+                    validateRes[0] = validateName(ele.target.value);
                     break;
-                case "dob": validateRes[1] = validateDOB(ele.target.value);
+                case "dob":
+                    validateRes[1] = validateDOB(ele.target.value);
                     break;
-                case "email": validateRes[2] = validateEmail(ele.target.value);
+                case "email":
+                    validateRes[2] = validateEmail(ele.target.value);
                     break;
-                case "phone": validateRes[3] = validatePhone(ele.target.value);
+                case "phone":
+                    validateRes[3] = validatePhone(ele.target.value);
                     break;
             }
         });
@@ -202,7 +231,6 @@ function validate() {
 // NAME VALIDATION
 function validateName(inputText) {
     if (isLength(inputText)) {
-        dispErrors[0].innerHTML = "*Required";
     } else if (inputText.length > 20 || inputText.length < 4) {
         dispErrors[0].innerHTML = "*Name length should be 4 to 20 characters";
     } else {
@@ -212,9 +240,10 @@ function validateName(inputText) {
 }
 // DOB VALIDATION
 function validateDOB(inputText) {
-    const dateformat = /^((0?[1-9]|1[012])[/](0?[1-9]|[12][0-9]|3[01])[/](19|20)?[0-9]{2})*$/;
+    const dateformat =
+        /^((0?[1-9]|1[012])[/](0?[1-9]|[12][0-9]|3[01])[/](19|20)?[0-9]{2})*$/;
     if (isLength(inputText)) {
-        console.log('here');
+        console.log("here");
         dispErrors[1].innerHTML = "*Required";
     } else if (!inputText.match(dateformat)) {
         dispErrors[1].innerHTML = "*Invalid date (MM/DD/YY)";
