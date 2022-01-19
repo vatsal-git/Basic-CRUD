@@ -1,191 +1,190 @@
 :root {
-  --primary: #3f86e2;
-  --primary-dark: #2a5894;
-  --primary-light: #89bcff;
+    --primary: #3f86e2;
+    --primary-dark: #2a5894;
+    --primary-light: #89bcff;
 }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 section {
-  width: 100%;
+    width: 100%;
 }
 
 #empForm,
 .dispTable {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 2em auto;
-  padding: 4.5em 2em 2em 2em;
-  border: 1px solid var(--primary);
-  width: 80%;
-  border-radius: 5px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2em auto;
+    padding: 4.5em 2em 2em 2em;
+    border: 1px solid var(--primary);
+    width: 80%;
+    border-radius: 5px;
 }
 
 .header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin-top: 0;
-  padding: 0.5em;
-  background-color: var(--primary);
-  width: 100%;
-  height: 2.5em;
-  color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 0;
+    padding: 0.5em;
+    background-color: var(--primary);
+    width: 100%;
+    height: 2.5em;
+    color: white;
 }
 
 .btn {
-  border: none;
-  border-radius: 5px;
-  background-color: var(--primary);
-  padding: 0.6em 1em;
-  width: 5em;
-  margin: 0.2em;
-  box-shadow: 100px 100px 80px rgba(0, 0, 0, 0.07);
-  color: white;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--primary);
+    padding: 0.6em 1em;
+    width: 5em;
+    margin: 0.2em;
+    box-shadow: 100px 100px 80px rgba(0, 0, 0, 0.07);
+    color: white;
 }
 .btn:hover {
-  background-color: var(--primary-dark);
-  cursor: pointer;
+    background-color: var(--primary-dark);
+    cursor: pointer;
 }
 .btn:active {
-  box-shadow: 100px 100px 80px rgba(0, 0, 0, 0.07);
-  transform: translateY(4px);
+    box-shadow: 100px 100px 80px rgba(0, 0, 0, 0.07);
+    transform: translateY(4px);
 }
 .btn:disabled {
-  background-color: var(--primary-light);
-  pointer-events: none;
+    background-color: var(--primary-light);
+    pointer-events: none;
 }
 
 .input-field {
-  width: 100%;
-  padding: 0.5em 0.2em;
-  display: flex;
+    width: 100%;
+    padding: 0.5em 0.2em;
+    display: flex;
 }
 
-#empForm input[type="text"] {
-  padding: 0.3em;
-  width: 80%;
-  border: 1px solid lightgray;
-  border-radius: 5px;
-  outline: none;
-  cursor: pointer;
+#empForm input[type='text'] {
+    padding: 0.3em;
+    width: 80%;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
 }
-#empForm input[type="text"]:focus {
-  border: 1px solid var(--primary);
+#empForm input[type='text']:focus {
+    border: 1px solid var(--primary);
 }
 
 .label {
-  padding-right: 1em;
-  width: 20%;
-  text-align: right;
-  font-weight: bold;
+    padding-right: 1em;
+    width: 20%;
+    text-align: right;
+    font-weight: bold;
 }
 
 #gender-option-wrapper {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 #hobby-option-wrapper {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .error-field {
-  width: 100%;
-  display: flex;
-  justify-content: right;
+    width: 100%;
+    display: flex;
+    justify-content: right;
 }
 
 .error {
-  width: 80%;
-  font-size: 0.7em;
-  color: red;
-  height: 0.7em;
-  margin-bottom: 0.5em;
+    width: 80%;
+    font-size: 0.7em;
+    color: red;
+    height: 0.7em;
+    margin-bottom: 0.5em;
 }
 
 .dispTable {
-  display: block;
-  overflow-x: scroll;
+    display: block;
+    overflow-x: scroll;
 }
 
 .dispTableHead,
 .dispTableData {
-  border: 1px solid lightgray;
-  padding: 0.7em;
-  text-align: left;
+    border: 1px solid lightgray;
+    padding: 0.7em;
+    text-align: left;
 }
 
 /* RESPONSIVE */
 @media screen and (max-width: 768px) {
-  body {
-    font-size: smaller;
-  }
+    body {
+        font-size: smaller;
+    }
 
-  #empForm,
-  .dispTable {
-    margin: 0 auto;
-    margin-top: 2em;
-    padding: 3.5em 1em 1em 1em;
-  }
+    #empForm,
+    .dispTable {
+        margin: 0 auto;
+        margin-top: 2em;
+        padding: 3.5em 1em 1em 1em;
+    }
 
-  .input-field {
-    flex-direction: column;
-    padding: 0;
-    margin-top: 1em;
-  }
+    .input-field {
+        flex-direction: column;
+        padding: 0;
+        margin-top: 1em;
+    }
 
-  .label {
-    margin-bottom: .5em;
-  }
+    .label {
+        margin-bottom: 0.5em;
+    }
 
-  .label,
-  #empForm input[type="text"] {
-    width: 100%;
-    text-align: left;
-  }
+    .label,
+    #empForm input[type='text'] {
+        width: 100%;
+        text-align: left;
+    }
 
-  .option {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    margin-bottom: 0.7em;
-  }
-  .option input {
-    margin-right: 0.5em;
-  }
+    .option {
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+    .option input {
+        margin-right: 0.5em;
+    }
 
-  #hobby-option-wrapper,
-  #gender-option-wrapper {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-  }
+    #hobby-option-wrapper,
+    #gender-option-wrapper {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
 
-  .btn {
-    padding: 0.5em 0.3em;
-  }
-  
-  .dispTableHead,
-  .dispTableData {
-    padding: 0em;
-  }
+    .btn {
+        padding: 0.5em 0.3em;
+    }
 
-  .error-field {
-    flex-direction: column;
-  }
-  .error {
-    width: 100%;
-  }
+    .dispTableHead,
+    .dispTableData {
+        padding: 0em;
+    }
+
+    .error-field {
+        flex-direction: column;
+    }
+    .error {
+        width: 100%;
+    }
 }
