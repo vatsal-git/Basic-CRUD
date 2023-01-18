@@ -6,6 +6,5 @@
 
 ## Stack:
 
-- React Js
-- Styles with Sass
+- HTML, CSS, Js
 
