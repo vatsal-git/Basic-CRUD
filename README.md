@@ -2,6 +2,7 @@
 
 ## Overview
 
+- Form to table details.
 - Internship training task.
 
 ## Stack:
